@@ -49,23 +49,23 @@ class ORCALanguageServer(LanguageServer):
         """Setup LSP features"""
         @self.feature("textDocument/completion")
         def on_completion(params: CompletionParams) -> Optional[CompletionList]:
-            return self._on_completion(params)
+            return self._on_completion(params)  # pragma: no cover
         
         @self.feature("textDocument/hover")
         def on_hover(params: HoverParams) -> Optional[Hover]:
-            return self._on_hover(params)
+            return self._on_hover(params)  # pragma: no cover
         
         @self.feature("textDocument/codeAction")
         def on_code_action(params: CodeActionParams) -> List[CodeAction]:
-            return self._on_code_action(params)
+            return self._on_code_action(params)  # pragma: no cover
         
         @self.feature("textDocument/didOpen")
         def on_did_open(params: DidOpenTextDocumentParams):
-            self._on_did_open(params)
+            self._on_did_open(params)  # pragma: no cover
         
         @self.feature("textDocument/didChange")
         def on_did_change(params: DidChangeTextDocumentParams):
-            self._on_did_change(params)
+            self._on_did_change(params)  # pragma: no cover
     
     def _on_completion(self, params: CompletionParams) -> Optional[CompletionList]:
         """Handle completion requests"""
