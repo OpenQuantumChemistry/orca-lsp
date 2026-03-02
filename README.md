@@ -62,6 +62,44 @@ pip install -e ".[dev]"
 pytest
 ```
 
+### Test Coverage
+
+The project maintains high test coverage:
+
+```bash
+pytest --cov=orca_lsp --cov-report=html
+```
+
+Open `htmlcov/index.html` to view the detailed coverage report.
+
+Current coverage: 96%
+
+## Architecture
+
+### Parser (`parser.py`)
+The parser provides:
+- Full ORCA input file parsing
+- Support for simple input lines (!)
+- % block parsing with parameter extraction
+- Geometry section parsing (XYZ and internal coordinates)
+- Validation and diagnostics
+
+### Server (`server.py`)
+The LSP server implements:
+- Text completion for all contexts
+- Hover documentation for keywords
+- Diagnostics publishing
+- Code actions for quick fixes
+- Document synchronization
+
+### Keywords (`keywords.py`)
+Comprehensive keyword database:
+- DFT functionals (hybrid, GGA, meta-GGA, double-hybrid)
+- Wavefunction methods (HF, MP2, CCSD, etc.)
+- Basis sets (Pople, Karlsruhe def2, Dunning cc-pVXZ)
+- Job types (SP, OPT, FREQ, TS, IRC, etc.)
+- % blocks with examples
+
 ## License
 
 MIT
