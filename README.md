@@ -64,7 +64,7 @@ pytest
 
 ### Test Coverage
 
-The project maintains high test coverage:
+The project maintains **100% test coverage**:
 
 ```bash
 pytest --cov=orca_lsp --cov-report=html
@@ -72,7 +72,20 @@ pytest --cov=orca_lsp --cov-report=html
 
 Open `htmlcov/index.html` to view the detailed coverage report.
 
-Current coverage: 100%
+Current coverage: **100%** (320 tests)
+
+## Documentation
+
+- **[Architecture](docs/ARCHITECTURE.md)** - Technical architecture and design
+- **[User Guide](docs/USER_GUIDE.md)** - Installation and editor integration
+- **[Contributing](docs/CONTRIBUTING.md)** - Development guidelines
+
+## Examples
+
+See the `examples/` directory for sample ORCA input files:
+- `water.inp` - Water molecule optimization with B3LYP
+- `benzene.inp` - DLPNO-CCSD(T) single point on benzene
+- `ethylene.inp` - Simple ethylene optimization
 
 ## Architecture
 
