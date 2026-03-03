@@ -31,6 +31,28 @@ DFT_FUNCTIONALS = {
     "revPBE": {"type": "gga", "description": "Revised PBE GGA functional"},
     "RPBE": {"type": "gga", "description": "RPBE GGA functional"},
     "OLYP": {"type": "gga", "description": "Handy-Cohen optimized LYP functional"},
+    # Additional range-separated hybrids
+    "CAM-B3LYP": {
+        "type": "range-separated",
+        "description": "Coulomb-attenuated B3LYP for charge transfer",
+    },
+    "LC-ωPBE": {
+        "type": "range-separated",
+        "description": "Long-range corrected PBE functional",
+    },
+    "ωB97M-D": {
+        "type": "range-separated",
+        "description": "ωB97M-D range-separated hybrid with dispersion",
+    },
+    # Minnesota functionals
+    "MN15": {"type": "hybrid", "description": "Minnesota 2015 hybrid functional"},
+    "MN15-L": {"type": "meta-gga", "description": "Minnesota 2015 local functional"},
+    "SCAN": {"type": "meta-gga", "description": "Strongly Constrained and Appropriately Normed"},
+    "SCAN0": {"type": "hybrid", "description": "SCAN hybrid functional"},
+    "r2SCAN": {"type": "meta-gga", "description": "Re-regularized SCAN functional"},
+    # Additional double hybrids
+    "DSD-PBEB95": {"type": "double-hybrid", "description": "DSD-PBEB95 double-hybrid functional"},
+    "PWPB95": {"type": "double-hybrid", "description": "PWPB95 double-hybrid functional"},
 }
 
 # Wavefunction methods
@@ -51,6 +73,11 @@ WAVEFUNCTION_METHODS = {
     "NEVPT2": {"description": "N-electron valence state PT2"},
     "CASPT2": {"description": "Complete Active Space PT2"},
     "MRPT": {"description": "Multireference perturbation theory"},
+    # Additional methods
+    "DFT": {"description": "Generic DFT calculation"},
+    "RKS": {"description": "Restricted Kohn-Sham DFT"},
+    "UKS": {"description": "Unrestricted Kohn-Sham DFT"},
+    "ROKS": {"description": "Restricted Open-shell Kohn-Sham DFT"},
 }
 
 # Basis sets
@@ -124,6 +151,15 @@ BASIS_SETS = {
         "type": "auxiliary",
         "description": "Optimal RI auxiliary basis for F12 methods",
     },
+    # Additional basis sets
+    "ma-def2-SVP": {
+        "type": "medium-diffuse",
+        "description": "Minimal augmented def2-SVP for DFT",
+    },
+    "ma-def2-TZVP": {
+        "type": "large-diffuse",
+        "description": "Minimal augmented def2-TZVP for DFT",
+    },
 }
 
 # Job types
@@ -158,6 +194,10 @@ PERCENT_BLOCKS = {
         "example": "%elprop dipole true end",
     },
     "coords": {"description": "Coordinate system settings", "example": "%coords internals on end"},
+    "cpcm": {
+        "description": "Conductor-like Polarizable Continuum Model",
+        "example": "%cpcm epsilon 80.4 end",
+    },
 }
 
 # All valid keywords (for diagnostics)

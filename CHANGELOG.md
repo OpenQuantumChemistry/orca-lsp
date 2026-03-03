@@ -1,5 +1,26 @@
 # Change Log
 
+## [0.4.0] - 2026-03-04
+
+### Added
+- Enhanced DFT functional database with additional functionals:
+  - CAM-B3LYP - Coulomb-attenuated B3LYP for charge transfer
+  - LC-ωPBE - Long-range corrected PBE functional
+  - ωB97M-D - ωB97M-D range-separated hybrid with dispersion
+  - MN15, MN15-L - Minnesota 2015 functionals
+  - SCAN, SCAN0, r2SCAN - SCAN family functionals
+  - DSD-PBEB95, PWPB95 - Additional double hybrids
+- Added RKS, UKS, ROKS method types for DFT
+- Added ma-def2 basis sets for minimal augmented DFT
+- Added %cpcm block for solvation calculations
+- New example files:
+  - solvation.inp - CPCM solvation calculation
+  - camb3lyp.inp - CAM-B3LYP calculation
+
+### Changed
+- Expanded keywords database (25 DFT functionals, 20 wavefunction methods, 27 basis sets)
+- Enhanced completion support for new keywords
+
 ## [0.3.0] - 2026-03-03
 
 ### Added
@@ -28,8 +49,6 @@
 ### Documentation
 - Updated CHANGELOG with coverage improvements
 - Documented pragma comments for coverage
-
-# Change Log
 
 ## [0.2.1] - 2026-03-03
 
