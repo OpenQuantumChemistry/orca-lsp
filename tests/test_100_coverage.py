@@ -1,10 +1,10 @@
 """Tests to achieve 100% coverage."""
 
 import pytest
-from unittest.mock import MagicMock, PropertyMock, patch, AsyncMock
+from unittest.mock import MagicMock, PropertyMock
 
 from orca_lsp.parser import ORCAParser, Atom, Geometry, SimpleInput, PercentBlock
-from orca_lsp.server import ORCALanguageServer, main
+from orca_lsp.server import ORCALanguageServer
 from lsprotocol.types import (
     CompletionParams,
     HoverParams,

@@ -1,14 +1,11 @@
 """Tests for 100% coverage of ORCA LSP server and parser."""
 
-from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
+from unittest.mock import MagicMock, PropertyMock, patch
 
 import pytest
 from lsprotocol.types import (
-    CodeAction,
     CodeActionContext,
     CodeActionParams,
-    CompletionItem,
-    CompletionItemKind,
     CompletionList,
     CompletionParams,
     Diagnostic,
@@ -18,17 +15,14 @@ from lsprotocol.types import (
     Hover,
     HoverParams,
     MarkupContent,
-    MarkupKind,
     Position,
     Range,
     TextDocumentIdentifier,
     TextDocumentItem,
-    TextEdit,
     VersionedTextDocumentIdentifier,
-    WorkspaceEdit,
 )
 
-from orca_lsp.parser import ORCAParser, ParseResult
+from orca_lsp.parser import ORCAParser
 from orca_lsp.server import ORCALanguageServer, main
 
 
@@ -190,7 +184,7 @@ class TestServerHover:
             position=Position(line=0, character=10),
         )
 
-        result = server._on_hover(params)
+        server._on_hover(params)
 
     def test_on_hover_job_type(self, server):
         """Test hover on job type."""
@@ -600,7 +594,7 @@ class TestBasisSetHover:
             position=Position(line=0, character=10),
         )
 
-        result = server._on_hover(params)
+        server._on_hover(params)
         # def2 is not a complete keyword, so may return None
         # This is acceptable behavior
 
@@ -614,7 +608,7 @@ class TestBasisSetHover:
             position=Position(line=0, character=10),
         )
 
-        result = server._on_hover(params)
+        server._on_hover(params)
         # Should hover on 6 or 31, may not find complete keyword
 
 
@@ -784,7 +778,7 @@ class TestServerBasisSetHover:
             position=Position(line=0, character=10),
         )
 
-        result = server._on_hover(params)
+        server._on_hover(params)
         # Should find cc-pVTZ in BASIS_SETS
 
 

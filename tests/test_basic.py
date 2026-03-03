@@ -2,7 +2,6 @@
 Basic tests for orca-lsp
 """
 
-import pytest
 
 
 def test_import():

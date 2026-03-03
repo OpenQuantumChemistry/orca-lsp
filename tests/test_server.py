@@ -1,25 +1,8 @@
 """Tests for ORCA LSP server."""
 import pytest
-from unittest.mock import MagicMock, patch, PropertyMock
+from unittest.mock import MagicMock, patch
 from lsprotocol.types import (
-    CompletionParams,
-    CompletionItem,
-    CompletionItemKind,
-    CompletionList,
-    HoverParams,
-    Hover,
-    MarkupContent,
-    MarkupKind,
     Position,
-    DidOpenTextDocumentParams,
-    DidChangeTextDocumentParams,
-    TextDocumentItem,
-    TextDocumentIdentifier,
-    VersionedTextDocumentIdentifier,
-    Diagnostic,
-    DiagnosticSeverity,
-    Range,
-    CodeActionParams,
 )
 
 from orca_lsp.server import ORCALanguageServer, main

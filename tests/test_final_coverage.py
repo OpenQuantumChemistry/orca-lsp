@@ -13,13 +13,13 @@ class TestParserEdgeCases:
     def test_parse_with_invalid_charge(self, parser):
         """Test parsing with invalid charge value."""
         content = "! B3LYP def2-SVP\n* xyz invalid 1\nH 0 0 0\n*"
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_with_invalid_multiplicity(self, parser):
         """Test parsing with invalid multiplicity value."""
         content = "! B3LYP def2-SVP\n* xyz 0 invalid\nH 0 0 0\n*"
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_scf_maxiter(self, parser):
@@ -83,7 +83,7 @@ H 0 0 0
 * xyz 0 1
 H 0 0 0
 *"""
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_job_type_opt_freq(self, parser):

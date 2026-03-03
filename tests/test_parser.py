@@ -1,6 +1,4 @@
 """Tests for ORCA parser."""
-import pytest
-from unittest.mock import MagicMock
 
 from orca_lsp.parser import ORCAParser
 

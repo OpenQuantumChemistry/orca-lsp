@@ -332,7 +332,7 @@ class ORCALanguageServer(LanguageServer):
     def _on_code_action(self, params: CodeActionParams) -> List[CodeAction]:
         """Handle code action requests"""
         actions = []
-        document = self.workspace.get_text_document(params.text_document.uri)
+        self.workspace.get_text_document(params.text_document.uri)
         
         # Get diagnostics at this range
         for diagnostic in params.context.diagnostics:

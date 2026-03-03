@@ -1,12 +1,11 @@
 """Tests to cover specific missing lines."""
 
 import pytest
-from unittest.mock import MagicMock, PropertyMock, patch
+from unittest.mock import MagicMock, PropertyMock
 
 from orca_lsp.parser import ORCAParser
 from orca_lsp.server import ORCALanguageServer
 from lsprotocol.types import (
-    CompletionParams,
     HoverParams,
     Position,
     TextDocumentIdentifier,

@@ -1,5 +1,4 @@
 """Tests for ORCA keywords."""
-import pytest
 
 from orca_lsp.keywords import (
     DFT_FUNCTIONALS,

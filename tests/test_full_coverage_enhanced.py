@@ -3,12 +3,9 @@ import pytest
 from unittest.mock import MagicMock, patch
 from lsprotocol.types import (
     Position,
-    CompletionParams,
-    CompletionItemKind,
     TextDocumentItem,
     TextDocumentIdentifier,
     VersionedTextDocumentIdentifier,
-    HoverParams,
     CodeActionParams,
     Range,
     DidOpenTextDocumentParams,

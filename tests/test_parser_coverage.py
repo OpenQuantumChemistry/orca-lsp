@@ -1,6 +1,6 @@
 """Tests to improve parser coverage."""
 import pytest
-from orca_lsp.parser import ORCAParser, SimpleInput, PercentBlock, Atom, Geometry, ParseResult
+from orca_lsp.parser import ORCAParser, SimpleInput, PercentBlock, Atom, Geometry
 
 
 class TestSimpleInput:
@@ -153,25 +153,25 @@ H 0 0 0
 * xyz 0 1
 H 0 0 0
 *"""
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_geometry_no_charge_mult(self, parser):
         """Test parsing geometry without charge/multiplicity."""
         content = "! B3LYP def2-SVP\n*\nH 0 0 0\n*"
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_geometry_invalid_atom(self, parser):
         """Test parsing geometry with invalid atom line."""
         content = "! B3LYP def2-SVP\n* xyz 0 1\nnot_an_atom\n*"
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_geometry_invalid_coords(self, parser):
         """Test parsing geometry with invalid coordinates."""
         content = "! B3LYP def2-SVP\n* xyz 0 1\nH not a number\n*"
-        result = parser.parse(content)
+        parser.parse(content)
         # Should handle gracefully
 
     def test_parse_internal_coordinates(self, parser):

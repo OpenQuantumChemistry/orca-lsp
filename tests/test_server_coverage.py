@@ -4,7 +4,6 @@ from unittest.mock import MagicMock, PropertyMock, patch
 
 import pytest
 from lsprotocol.types import (
-    CodeAction,
     CodeActionContext,
     CodeActionParams,
     CompletionList,
@@ -15,15 +14,11 @@ from lsprotocol.types import (
     DidOpenTextDocumentParams,
     Hover,
     HoverParams,
-    MarkupContent,
-    MarkupKind,
     Position,
     Range,
     TextDocumentIdentifier,
     TextDocumentItem,
-    TextEdit,
     VersionedTextDocumentIdentifier,
-    WorkspaceEdit,
 )
 
 from orca_lsp.server import ORCALanguageServer
