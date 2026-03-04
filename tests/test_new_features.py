@@ -31,7 +31,6 @@ class TestNewBlockParsing:
         assert result.percent_blocks[0].parameters.get("nroots") == 10
 
 
-
 class TestNewBlockEdgeCases:
     def test_eprnmr_no_match(self):
         parser = ORCAParser()
@@ -48,7 +47,6 @@ class TestNewBlockEdgeCases:
         assert result.percent_blocks[0].parameters.get("nroots") is None
 
 
-
 class TestBlockRegexEdgeCases:
     def test_eprnmr_gtensor_no_number(self):
         parser = ORCAParser()
@@ -63,4 +61,3 @@ class TestBlockRegexEdgeCases:
         result = parser.parse(content)
         assert len(result.percent_blocks) == 1
         assert result.percent_blocks[0].parameters.get("nroots") is None
-
