@@ -1,5 +1,17 @@
 # Change Log
 
+## [0.5.3] - 2026-03-05
+
+### Added
+- New example files demonstrating advanced ORCA features:
+  - `transition_state.inp` - TS optimization with %geom settings
+  - `td_dft.inp` - TD-DFT excited state calculation  
+  - `counterpoise.inp` - Counterpoise correction (BSSE)
+
+### Changed
+- Updated documentation with new examples
+- Tests: 338 tests with 100% coverage
+
 ## [0.5.2] - 2026-03-04
 
 ### Added
@@ -10,7 +22,6 @@
 - Updated server version to 0.5.2
 - Total: 45 DFT functionals, 21 percent blocks
 - Tests: 338 tests with 100% coverage
-
 
 ## [0.5.1] - 2026-03-04
 
@@ -40,7 +51,6 @@
 - Expanded keywords database (34 DFT functionals, 32 basis sets, 19 % blocks)
 - Enhanced parser for new % block parameters
 - Test count: 329 tests (100% coverage)
-
 
 ## [0.4.0] - 2026-03-04
 
