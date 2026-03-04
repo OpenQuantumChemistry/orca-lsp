@@ -274,6 +274,24 @@ class ORCAParser:
                     if match:
                         block.parameters["maxiter"] = int(match.group(1))
 
+        elif block.name == "eprnmr":
+            # %eprnmr settings
+            for line in lines:
+                stripped = line.strip().lower()
+                if "gtensor" in stripped:
+                    match = re.search(r"gtensor\s+(\d+)", stripped)
+                    if match:
+                        block.parameters["gtensor"] = int(match.group(1))
+
+        elif block.name == "rirpa":
+            # %rirpa settings
+            for line in lines:
+                stripped = line.strip().lower()
+                if "nroots" in stripped:
+                    match = re.search(r"nroots\s+(\d+)", stripped)
+                    if match:
+                        block.parameters["nroots"] = int(match.group(1))
+
     def parse_geometry(self, lines: List[str], start_line: int) -> Tuple[Optional[Geometry], int]:
         """Parse geometry section (* xyz ... *)"""
         geom = Geometry(line_start=start_line)

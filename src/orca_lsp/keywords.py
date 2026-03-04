@@ -53,6 +53,11 @@ DFT_FUNCTIONALS = {
     # Additional double hybrids
     "DSD-PBEB95": {"type": "double-hybrid", "description": "DSD-PBEB95 double-hybrid functional"},
     "PWPB95": {"type": "double-hybrid", "description": "PWPB95 double-hybrid functional"},
+    "B3PW91": {"type": "hybrid", "description": "B3PW91 hybrid functional"},
+    "X3LYP": {"type": "hybrid", "description": "X3LYP extended hybrid functional"},
+    "O3LYP": {"type": "hybrid", "description": "O3LYP hybrid functional"},
+    "mPWLYP": {"type": "hybrid", "description": "mPWLYP hybrid functional"},
+    "BMK": {"type": "hybrid", "description": "Boese-Martin for kinetics"},
 }
 
 # Wavefunction methods
@@ -157,6 +162,13 @@ BASIS_SETS = {
         "description": "Minimal augmented def2-SVP for DFT",
     },
     "ma-def2-TZVP": {
+    "pc-1": {"type": "polarization-consistent", "description": "Polarization-consistent basis set (double-zeta)"},
+    "pc-2": {"type": "polarization-consistent", "description": "Polarization-consistent basis set (triple-zeta)"},
+    "pc-3": {"type": "polarization-consistent", "description": "Polarization-consistent basis set (quadruple-zeta)"},
+    "aug-pc-1": {"type": "polarization-consistent", "description": "Augmented pc-1 basis set"},
+    "aug-pc-2": {"type": "polarization-consistent", "description": "Augmented pc-2 basis set"},
+    "EPR-II": {"type": "EPR", "description": "EPR basis set for hyperfine coupling"},
+    "EPR-III": {"type": "EPR", "description": "Extended EPR basis set"},
         "type": "large-diffuse",
         "description": "Minimal augmented def2-TZVP for DFT",
     },
@@ -197,6 +209,22 @@ PERCENT_BLOCKS = {
     "cpcm": {
         "description": "Conductor-like Polarizable Continuum Model",
         "example": "%cpcm epsilon 80.4 end",
+    },
+    "eprnmr": {
+        "description": "EPR and NMR property calculations",
+        "example": "%eprnmr gtensor 1 end",
+    },
+    "moinp": {
+        "description": "MO input from previous calculation",
+        "example": '%moinp "previous.gbw"',
+    },
+    "output": {
+        "description": "Output file settings",
+        "example": '%output xyzfile true',
+    },
+    "rirpa": {
+        "description": "RI-RPA and GW calculations",
+        "example": "%rirpa nroots 10 end",
     },
 }
 

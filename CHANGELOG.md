@@ -1,5 +1,26 @@
 # Change Log
 
+## [0.5.0] - 2026-03-04
+
+### Added
+- New % blocks for advanced ORCA functionality:
+  - %eprnmr - EPR and NMR property calculations
+  - %moinp - MO input from previous calculation
+  - %rirpa - RI-RPA and GW calculations
+  - %output - Output file settings
+- Expanded DFT functional database:
+  - B3PW91, X3LYP, O3LYP, mPWLYP, BMK
+- New basis sets:
+  - pc-1, pc-2, pc-3 - Jensen polarization-consistent
+  - aug-pc-1, aug-pc-2 - Augmented pc basis sets
+  - EPR-II, EPR-III - EPR-optimized basis sets
+
+### Changed
+- Expanded keywords database (34 DFT functionals, 32 basis sets, 19 % blocks)
+- Enhanced parser for new % block parameters
+- Test count: 329 tests (100% coverage)
+
+
 ## [0.4.0] - 2026-03-04
 
 ### Added
