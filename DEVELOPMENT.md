@@ -1,3 +1,30 @@
+## 2026-03-04 (Cron: 20:04 CST) - v0.5.1 Bug Fix
+
+### GitHub Status Check
+- **Issues**: 0 open issues
+- **Pull Requests**: 0 open PRs
+
+### Bug Fix
+1. **BASIS_SETS Dictionary Structure Fix**:
+   - Fixed nested dictionary bug where pc-1, pc-2, pc-3, aug-pc-1, aug-pc-2, EPR-II, EPR-III were incorrectly nested inside ma-def2-TZVP entry
+   - Properly flattened to 38 top-level basis set entries
+
+### Code Changes
+- **src/orca_lsp/keywords.py**: Fixed BASIS_SETS dictionary structure
+- **pyproject.toml**: Version bump 0.5.0 → 0.5.1
+- **CHANGELOG.md**: Added v0.5.1 release notes
+
+### Test Coverage
+- **Total Tests**: 329 tests
+- **Coverage**: 100% maintained
+- **All tests passing**
+
+### Repository Status
+- Committed: 2131a86
+- Pushed to origin/main
+
+---
+
 ## 2026-03-04 (Cron: Development Session) - v0.5.0 Release
 
 ### GitHub Status Check
@@ -42,7 +69,6 @@
 - Type checking completed
 
 ### Repository Status
-
 
 ---
 
