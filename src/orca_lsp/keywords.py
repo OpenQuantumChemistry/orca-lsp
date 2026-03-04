@@ -344,3 +344,60 @@ MAXCORE_RECOMMENDATIONS = {
     "large": 4000,  # 100-200 atoms
     "very_large": 8000,  # > 200 atoms
 }
+
+
+# Additional DFT functionals (v0.5.2)
+ADDITIONAL_FUNCTIONALS = {
+    # More range-separated hybrids
+    "ωB97X-D3": {
+        "type": "range-separated",
+        "description": "ωB97X-D3 range-separated hybrid with D3 dispersion",
+    },
+    "ωB97X-D4": {
+        "type": "range-separated",
+        "description": "ωB97X-D4 range-separated hybrid with D4 dispersion",
+    },
+    "LC-ωPBEh": {
+        "type": "range-separated",
+        "description": "LC-ωPBEh long-range corrected hybrid",
+    },
+    # More Minnesota functionals
+    "M08-HX": {"type": "hybrid", "description": "Minnesota 2008 range-separated hybrid"},
+    "M08-SO": {"type": "hybrid", "description": "Minnesota 2008 range-separated hybrid"},
+    "M11": {"type": "range-separated", "description": "Minnesota 2011 range-separated hybrid"},
+    "M11-L": {"type": "meta-gga", "description": "Minnesota 2011 local functional"},
+    # More double hybrids
+    "DSD-PBEP86": {"type": "double-hybrid", "description": "DSD-PBEP86 double-hybrid functional"},
+    "DOD-PBEP86": {"type": "double-hybrid", "description": "DOD-PBEP86 double-hybrid functional"},
+}
+
+# Additional % blocks (v0.5.2)
+ADDITIONAL_PERCENT_BLOCKS = {
+    "symmetry": {
+        "description": "Symmetry settings and constraints",
+        "example": "%symmetry CNV 2 end",
+    },
+    "rels": {
+        "description": "Relativistic calculation settings",
+        "example": "%rels soc type 1 end",
+    },
+    "cis": {
+        "description": "CI Singles (CIS/TDHF) excited states",
+        "example": "%cis nroots 5 end",
+    },
+    "tddft": {
+        "description": "Time-dependent DFT excited states",
+        "example": "%tddft nroots 10 end",
+    },
+    "mrcc": {
+        "description": "Multireference coupled cluster settings",
+        "example": "%mrcc method MkMRCCSD(T) end",
+    },
+}
+
+# Merge additional keywords into main dictionaries
+DFT_FUNCTIONALS.update(ADDITIONAL_FUNCTIONALS)
+PERCENT_BLOCKS.update(ADDITIONAL_PERCENT_BLOCKS)
+
+# Update ALL_KEYWORDS to include new functionals
+ALL_KEYWORDS.update(ADDITIONAL_FUNCTIONALS)

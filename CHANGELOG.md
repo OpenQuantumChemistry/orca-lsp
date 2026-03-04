@@ -1,5 +1,17 @@
 # Change Log
 
+## [0.5.2] - 2026-03-04
+
+### Added
+- New DFT functionals: ωB97X-D3, ωB97X-D4, LC-ωPBEh, M08-HX, M08-SO, M11, M11-L, DSD-PBEP86, DOD-PBEP86
+- New percent blocks: symmetry, rels, cis, tddft, mrcc
+
+### Changed
+- Updated server version to 0.5.2
+- Total: 45 DFT functionals, 21 percent blocks
+- Tests: 338 tests with 100% coverage
+
+
 ## [0.5.1] - 2026-03-04
 
 ### Fixed
