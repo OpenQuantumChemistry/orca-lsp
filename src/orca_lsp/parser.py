@@ -82,7 +82,7 @@ class ParseResult:
 class ORCAParser:
     """Parser for ORCA input files"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.dft_functionals = set(DFT_FUNCTIONALS.keys())
         self.wavefunction_methods = set(WAVEFUNCTION_METHODS.keys())
         self.basis_sets = set(BASIS_SETS.keys())
@@ -232,7 +232,7 @@ class ORCAParser:
 
         return block, block.line_end
 
-    def _parse_block_parameters(self, block: PercentBlock, content: str):
+    def _parse_block_parameters(self, block: PercentBlock, content: str) -> None:
         """Parse parameters for a % block"""
         lines = content.split("\n")
 
@@ -345,7 +345,7 @@ class ORCAParser:
 
         return geom, geom.line_end if geom.line_end > 0 else i
 
-    def _run_diagnostics(self, result: ParseResult):
+    def _run_diagnostics(self, result: ParseResult) -> None:
         """Run diagnostics and populate errors/warnings"""
         # Check for simple input
         if result.simple_input is None:

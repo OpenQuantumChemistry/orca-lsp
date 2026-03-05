@@ -1,7 +1,7 @@
 """ORCA Language Server Protocol implementation"""
 
 import re
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from pygls.server import LanguageServer
 from lsprotocol.types import (
@@ -26,6 +26,9 @@ from lsprotocol.types import (
     WorkspaceEdit,
 )
 
+if TYPE_CHECKING:
+    from pygls.workspace import TextDocument
+
 from .parser import ORCAParser
 from .keywords import (
     DFT_FUNCTIONALS,
@@ -40,12 +43,12 @@ from .keywords import (
 class ORCALanguageServer(LanguageServer):
     """ORCA Language Server"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("orca-lsp", "0.5.3")
         self.parser = ORCAParser()
         self._setup_features()
 
-    def _setup_features(self):
+    def _setup_features(self) -> None:
         """Setup LSP features"""
 
         @self.feature("textDocument/completion")
@@ -61,11 +64,11 @@ class ORCALanguageServer(LanguageServer):
             return self._on_code_action(params)  # pragma: no cover
 
         @self.feature("textDocument/didOpen")
-        def on_did_open(params: DidOpenTextDocumentParams):
+        def on_did_open(params: DidOpenTextDocumentParams) -> None:
             self._on_did_open(params)  # pragma: no cover
 
         @self.feature("textDocument/didChange")
-        def on_did_change(params: DidChangeTextDocumentParams):
+        def on_did_change(params: DidChangeTextDocumentParams) -> None:
             self._on_did_change(params)  # pragma: no cover
 
     def _on_completion(self, params: CompletionParams) -> Optional[CompletionList]:
@@ -80,7 +83,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_completions(self, line: str, position: Position) -> List[CompletionItem]:
         """Get completions based on context"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         stripped = line[: position.character].strip()
 
@@ -102,7 +105,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_percent_completions(self, line: str) -> List[CompletionItem]:
         """Get % block completions"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         # Check if we're completing the block name
         match = re.match(r"%\s*(\w*)$", line)
@@ -127,7 +130,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_block_specific_completions(self, block_name: str) -> List[CompletionItem]:
         """Get completions for specific % block parameters"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         if block_name == "maxcore":
             for mem in ["1000", "2000", "4000", "8000", "16000"]:
@@ -172,7 +175,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_method_completions(self) -> List[CompletionItem]:
         """Get method completions"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         # DFT functionals
         for name, info in DFT_FUNCTIONALS.items():
@@ -200,7 +203,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_basis_completions(self) -> List[CompletionItem]:
         """Get basis set completions"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         for name, info in BASIS_SETS.items():
             completions.append(
@@ -216,7 +219,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_job_completions(self) -> List[CompletionItem]:
         """Get job type completions"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         for name, info in JOB_TYPES.items():
             completions.append(
@@ -232,7 +235,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _get_element_completions(self) -> List[CompletionItem]:
         """Get element symbol completions for geometry"""
-        completions = []
+        completions: List[CompletionItem] = []
 
         for element in sorted(ELEMENTS):
             completions.append(
@@ -304,7 +307,7 @@ class ORCALanguageServer(LanguageServer):
 
         return None
 
-    def _get_word_at_position(self, document, position: Position) -> str:
+    def _get_word_at_position(self, document: "TextDocument", position: Position) -> str:
         """Get the word at the given position"""
         line = document.lines[position.line]
 
@@ -317,9 +320,9 @@ class ORCALanguageServer(LanguageServer):
         while end < len(line) and line[end].isalnum():
             end += 1
 
-        return line[start:end]
+        return str(line[start:end])
 
-    def _validate_document(self, uri: str):
+    def _validate_document(self, uri: str) -> None:
         """Validate a document and publish diagnostics"""
         document = self.workspace.get_text_document(uri)
         content = document.source
@@ -328,7 +331,7 @@ class ORCALanguageServer(LanguageServer):
         result = self.parser.parse(content)
 
         # Convert to LSP diagnostics
-        diagnostics = []
+        diagnostics: List[Diagnostic] = []
 
         for error in result.errors:
             diagnostics.append(
@@ -361,7 +364,7 @@ class ORCALanguageServer(LanguageServer):
 
     def _on_code_action(self, params: CodeActionParams) -> List[CodeAction]:
         """Handle code action requests"""
-        actions = []
+        actions: List[CodeAction] = []
         self.workspace.get_text_document(params.text_document.uri)
 
         # Get diagnostics at this range
@@ -389,16 +392,16 @@ class ORCALanguageServer(LanguageServer):
 
         return actions
 
-    def _on_did_open(self, params: DidOpenTextDocumentParams):
+    def _on_did_open(self, params: DidOpenTextDocumentParams) -> None:
         """Handle document open"""
         self._validate_document(params.text_document.uri)
 
-    def _on_did_change(self, params: DidChangeTextDocumentParams):
+    def _on_did_change(self, params: DidChangeTextDocumentParams) -> None:
         """Handle document change"""
         self._validate_document(params.text_document.uri)
 
 
-def main():
+def main() -> None:
     """Main entry point"""
     server = ORCALanguageServer()
     server.start_io()
